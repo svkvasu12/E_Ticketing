@@ -27,6 +27,7 @@ namespace New_Final_ET1.Data.Services
                 Description = movie.Description,
                 Price = movie.Price,
                 File = movie.File,
+                FileName = movie.FileName,
                 CinemaId = movie.CinemaId,
                 StartDate = movie.StartDate,
                 EndDate = movie.EndDate,
@@ -82,6 +83,7 @@ namespace New_Final_ET1.Data.Services
                 dbMovie.Description = movie.Description;
                 dbMovie.Price = movie.Price;
                 dbMovie.File = movie.File;
+                dbMovie.FileName = movie.FileName;
                 dbMovie.CinemaId = movie.CinemaId;
                 dbMovie.StartDate = movie.StartDate;
                 dbMovie.EndDate = movie.EndDate;

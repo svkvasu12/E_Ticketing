@@ -39,7 +39,24 @@
                         <input name="searchString" type="text" class="form-control" placeholder="Search for a movie..." aria-label="Recipient's username" aria-describedby="button-addon2">
                         <button class="btn btn-outline-success my-2 my-sm-0" type="submit"><i class="bi bi-search"></i></button>
                     </form>
-                    <partial name="_LoginPartial" />
+                    <ul class="navbar-nav">
+                        @await Component.InvokeAsync("ShoppingCartSummery") 
+                        </ul>
+                    @*User Profile*@
+
+                    <div class="dropdown">
+                      <button class="btn btn-outline-success dropdown-toggle" type="button"  data-togglr="dropdown" >
+                          <i class="bi bi-person-badge"></i> OrdersList
+                      </button> 
+                      <ul class="dropdown-menu" aria-libelledby="profile-btn">
+                          <li>
+                              <a class="dropdown-item" asp-controller="Orders" asp-action="Index">
+                                  <i class="bi bi-list"></i> Orders
+                              </a>
+                          </li>
+                      </ul>
+                            
+                            
                 </div>
             </div>
         </nav>

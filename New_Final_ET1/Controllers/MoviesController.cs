@@ -64,7 +64,7 @@ namespace New_Final_ET1.Controllers
         }
         [HttpPost]
         
-        public async Task<IActionResult> Create([Bind("Id,Name,Description,FileName,File,FileForm,CinemaId,ProducerId,ActorIds")] NewMovieVM movie)
+        public async Task<IActionResult> Create([Bind("Id,Name,Price,Description,StartDate,EndDate,FileName,File,FileForm,CinemaId,ProducerId,ActorIds")] NewMovieVM movie)
         {
             if (movie.FileForm != null)
             {
@@ -114,7 +114,7 @@ namespace New_Final_ET1.Controllers
                 StartDate = movieDetails.StartDate,
                 EndDate = movieDetails.EndDate,
                 File = movieDetails.File,
-               
+               FileName = movieDetails.FileName,
                 CinemaId = movieDetails.CinemaId,
                 ProducerId = movieDetails.ProducerId,
                 ActorIds = movieDetails.Actors_Movies.Select(n => n.ActorId).ToList(),
@@ -129,12 +129,12 @@ namespace New_Final_ET1.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Brand,Model,Year,FileName,File,FileForm")] NewMovieVM movie)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Price,StartDate,EndDate,Description,FileName,File,FileForm,CinemaId,ProducerId,ActorIds")] NewMovieVM movie)
         {
             if (id != movie.Id) return View("NotFound");
             /* if (!String.IsNullOrEmpty(movie.FileName))
-            {
-                movie.File = _service.movie.AsNoTracking().FirstOrDefault(movie => movie.Id == id).File;
+           {
+                movie.File = _service.Movie.AsNoTracking().FirstOrDefault(movie => movie.Id == id).File;
             }*/
              if (movie.File == null)
             {
