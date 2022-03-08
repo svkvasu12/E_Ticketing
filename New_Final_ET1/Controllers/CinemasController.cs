@@ -1,7 +1,9 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using New_Final_ET1.Data;
 using New_Final_ET1.Data.Services;
+
 using New_Final_ET1.Models;
 using System;
 using System.Collections.Generic;
@@ -11,6 +13,7 @@ using System.Threading.Tasks;
 
 namespace New_Final_ET1.Controllers
 {
+  
     public class CinemasController : Controller
     {
         private readonly ICinemasService _service;
@@ -19,12 +22,14 @@ namespace New_Final_ET1.Controllers
         {
             _service = service;
         }
+        [AllowAnonymous]
         public async Task<IActionResult> Index()
         {
             var allCinemas = await _service.GetAllAsync();
             return View(allCinemas);
 
         }
+        [AllowAnonymous]
         public async Task<IActionResult> Details(int id)
         {
             var cinemaDetails = await _service.GetByIdAsync(id);
@@ -33,6 +38,7 @@ namespace New_Final_ET1.Controllers
         }
 
         // GET: Cinemas/Create
+        [Authorize(Roles = "Admin")]
         public IActionResult Create()
         {
             return View();
@@ -66,7 +72,7 @@ namespace New_Final_ET1.Controllers
             await _service.AddAsync(cinema);
             return RedirectToAction(nameof(Index));
         }
-
+        [Authorize(Roles ="Admin")]
         // GET: Cinemas/Edit/5
         public async Task<IActionResult> Edit(int id)
         {

@@ -1,7 +1,9 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using New_Final_ET1.Data;
 using New_Final_ET1.Data.Services;
+
 using New_Final_ET1.Models;
 using System;
 using System.Collections.Generic;
@@ -11,6 +13,7 @@ using System.Threading.Tasks;
 
 namespace New_Final_ET1.Controllers
 {
+    
     public class ProducersController : Controller
     {
 
@@ -20,12 +23,14 @@ namespace New_Final_ET1.Controllers
         {
             _service = service;
         }
+        [AllowAnonymous]
         public async Task<IActionResult> Index()
         {
             var allProducers = await _service.GetAllAsync();
             return View(allProducers);
 
         }
+        [AllowAnonymous]
         public async Task<IActionResult> Details(int id)
         {
             var producerDetails = await _service.GetByIdAsync(id);
@@ -33,6 +38,7 @@ namespace New_Final_ET1.Controllers
             if (producerDetails == null) return View("NotFound");
             return View(producerDetails);
         }
+        [Authorize(Roles = "Admin")]
         public IActionResult Create()
         {
 

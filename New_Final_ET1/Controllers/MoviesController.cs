@@ -35,7 +35,7 @@ namespace New_Final_ET1.Controllers
             {
                 //var filteredResult = allMovies.Where(n => n.Name.ToLower().Contains(searchString.ToLower()) || n.Description.ToLower().Contains(searchString.ToLower())).ToList();
 
-                var filteredResultNew = allMovies.Where(n => string.Equals(n.Name, searchString, StringComparison.CurrentCultureIgnoreCase) || string.Equals(n.Description, searchString, StringComparison.CurrentCultureIgnoreCase)).ToList();
+                var filteredResultNew = allMovies.Where(n => n.Name.ToLower().Contains(searchString.ToLower()) || n.Description.ToLower().Contains(searchString.ToLower())).ToList();
 
                 return View("Index", filteredResultNew);
             }
@@ -50,8 +50,8 @@ namespace New_Final_ET1.Controllers
         }
 
         //GET: Movies/Create
-       
 
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Create()
         {
             var movieDropdownsData = await _service.GetNewMovieDropdownsValues();
@@ -99,7 +99,7 @@ namespace New_Final_ET1.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Edit(int id)
         {
             var movieDetails = await _service.GetMovieByIdAsync(id);
@@ -132,11 +132,11 @@ namespace New_Final_ET1.Controllers
         public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Price,StartDate,EndDate,Description,FileName,File,FileForm,CinemaId,ProducerId,ActorIds")] NewMovieVM movie)
         {
             if (id != movie.Id) return View("NotFound");
-            /* if (!String.IsNullOrEmpty(movie.FileName))
-           {
-                movie.File = _service.Movie.AsNoTracking().FirstOrDefault(movie => movie.Id == id).File;
-            }*/
-             if (movie.File == null)
+            if (!String.IsNullOrEmpty(movie.FileName) && movie.FileForm == null)
+            {
+                movie.File = (await _service.GetMovieByIdAsync(movie.Id)).File;
+            }
+            if (movie.File == null)
             {
                 byte[] bytes = null;
                 using (MemoryStream ms = new MemoryStream())

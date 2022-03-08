@@ -16,11 +16,11 @@ namespace New_Final_ET1.Models
         public string Name { get; set; }
 
         [Display(Name = "Movie description")]
-        [Required(ErrorMessage = "Description is required")]
+        
         public string Description { get; set; }
 
-        [Display(Name = "Price in $")]
-        [Required(ErrorMessage = "Price is required")]
+        [Display(Name = "Price in Kr")]
+       
         public double Price { get; set; }
         public string FileName { get; set; }
        

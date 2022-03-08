@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI;
+using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -11,6 +12,7 @@ using Microsoft.Extensions.Hosting;
 using New_Final_ET1.Data;
 using New_Final_ET1.Data.Cart;
 using New_Final_ET1.Data.Services;
+using New_Final_ET1.Models.mail;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -35,9 +37,17 @@ namespace New_Final_ET1
                     Configuration.GetConnectionString("DefaultConnection")));
             services.AddDatabaseDeveloperPageExceptionFilter();
 
-            services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
-                .AddEntityFrameworkStores<ApplicationDbContext>();
+            services.AddIdentity<IdentityUser,IdentityRole>()
+                .AddEntityFrameworkStores<ApplicationDbContext>().AddDefaultTokenProviders();
+            services.AddTransient<IEmailSender, MailJetEmailSender>();
+           // services.Configure<IdentityOptions>(opt =>
+           //{
+           //     opt.Password.RequiredLength = 5;
+           //    opt.Password.RequireLowercase = true;
+           //     opt.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromSeconds(30);
+           //     opt.Lockout.MaxFailedAccessAttempts = 5;
 
+           // });
             //configuration
             services.AddScoped<IActorsService,ActorsService>();
             services.AddScoped<IProducersService, ProducersService>();
@@ -51,6 +61,7 @@ namespace New_Final_ET1
 
             services.AddSession();
             services.AddControllersWithViews();
+            services.AddRazorPages();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -59,7 +70,7 @@ namespace New_Final_ET1
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-                app.UseMigrationsEndPoint();
+                
             }
             else
             {
@@ -79,7 +90,7 @@ namespace New_Final_ET1
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                    pattern: "{controller=Movies}/{action=Index}/{id?}");
                 endpoints.MapRazorPages();
             });
         }

@@ -33,23 +33,22 @@
                                 @Model.Producer.FullName
                             </a>
                         </p>
-                      
+
                         <p class="card-text"><b>Start Date: </b>@Model.StartDate.ToString("dd MMM yy")</p>
                         <p class="card-text"><b>End Date: </b>@Model.EndDate.ToString("dd MMM yy")</p>
+                        <p class="card-text"><b>Start Time: </b>@Model.StartDate.ToString("hh : mm")</p>
+                        <p class="card-text"><b>End Time: </b>@Model.EndDate.ToString("hh : mm")</p>
                         <p class="card-text ">
                             <b>Status: </b>
                             @if (DateTime.Now >= Model.StartDate && DateTime.Now <= Model.EndDate)
                             {
-                                <span class="badge bg-success text-white">AVAILABLE</span>
-                            }
-                            else if (DateTime.Now > Model.EndDate)
-                            {
-                                <span class="badge bg-danger text-white">EXPIRED</span>
-                            }
-                            else
-                            {
-                                <span class="badge bg-primary text-white">UPCOMING</span>
-                            }
+                    <span class="badge bg-success text-white">AVAILABLE</span> }
+                                else if (DateTime.Now > Model.EndDate)
+                                {
+                    <span class="badge bg-danger text-white">EXPIRED</span> }
+                                else
+                                {
+                    <span class="badge bg-primary text-white">UPCOMING</span>}
                         </p>
                         <p class="card-text">
                             <b>Actors: </b>
@@ -57,13 +56,12 @@
                             <div class="row">
                                 @foreach (var actor in Model.Actors_Movies)
                                 {
-                                <div class="column text-center">
-                                    <img class="border-info rounded-circle" src="data:image/jpeg;base64,@Convert.ToBase64String(@Model.File)" style="max-width: 150px" />
-                                    
-                                    <br />
-                                    <a asp-controller="Actors" asp-action="Details" asp-route-id="@actor.ActorId">@actor.Actor.FullName</a>
-                                </div>
-                                }
+                    <div class="column text-center">
+                        <img class="border-info rounded-circle" src="data:image/jpeg;base64,@Convert.ToBase64String(@Model.File)" style="max-width: 150px" />
+
+                        <br />
+                        <a asp-controller="Actors" asp-action="Details" asp-route-id="@actor.ActorId">@actor.Actor.FullName</a>
+                    </div>}
                             </div>
                         </p>
 

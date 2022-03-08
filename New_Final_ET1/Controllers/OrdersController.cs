@@ -25,7 +25,7 @@ namespace New_Final_ET1.Controllers
         public async Task<IActionResult> Index()
         {
             string userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
-            string userRole = User.FindFirstValue(ClaimTypes.Role);
+            //string userRole = User.FindFirstValue(ClaimTypes.Role);
 
             var orders = await _ordersService.GetOrdersByUserIdAsync(userId);
             return View(orders);

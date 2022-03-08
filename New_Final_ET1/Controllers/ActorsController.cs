@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using New_Final_ET1.Data;
 using New_Final_ET1.Data.Services;
 using New_Final_ET1.Models;
@@ -10,8 +11,10 @@ using System.Threading.Tasks;
 
 namespace New_Final_ET1.Controllers
 {
+    
     public class ActorsController : Controller
     {
+        
         private readonly IActorsService _service;
         
         public ActorsController(IActorsService service)
@@ -23,7 +26,7 @@ namespace New_Final_ET1.Controllers
             var data = await _service.GetAllAsync();
             return View(data);
         }
-
+        [Authorize(Roles = "Admin")]
         public  IActionResult Create()
         {
             
@@ -67,7 +70,7 @@ namespace New_Final_ET1.Controllers
             if (actorDetails == null) return View("NotFound");
             return View(actorDetails);
         }
-
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Edit (int id)
         {
 
@@ -81,6 +84,7 @@ namespace New_Final_ET1.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id,[Bind("Id,FullName,Bio,FileName,File,FileForm")] Actor actor)
         {
+           
             if (id != actor.Id)
             {
                 return NotFound();
@@ -108,7 +112,7 @@ namespace New_Final_ET1.Controllers
 
 
         }
-
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Delete(int id)
         {
 

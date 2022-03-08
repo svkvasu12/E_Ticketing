@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using New_Final_ET1.Models;
 using System;
@@ -47,6 +48,14 @@ namespace New_Final_ET1.Data
 
         public DbSet<Order> Orders { get; set; }
         public DbSet<OrderItem> OrderItems { get; set; }
+        
         public DbSet<ShoppingCartItem> ShoppingCartItems { get; set; }
+        
+        public DbSet<ApplicationUser> ApplicationUsers { get; set; }
+
+     
+
+
+
     }
 }
