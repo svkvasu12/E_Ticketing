@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\svasa\\Downloads\\New_Final_ET1\\New_Final_ET1.csproj": {}
+    "C:\\Users\\svasa\\Downloads\\E_Ticketing-main (2)\\E_Ticketing-main\\New_Final_ET1\\New_Final_ET1.csproj": {}
   },
   "projects": {
-    "C:\\Users\\svasa\\Downloads\\New_Final_ET1\\New_Final_ET1.csproj": {
+    "C:\\Users\\svasa\\Downloads\\E_Ticketing-main (2)\\E_Ticketing-main\\New_Final_ET1\\New_Final_ET1.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\svasa\\Downloads\\New_Final_ET1\\New_Final_ET1.csproj",
+        "projectUniqueName": "C:\\Users\\svasa\\Downloads\\E_Ticketing-main (2)\\E_Ticketing-main\\New_Final_ET1\\New_Final_ET1.csproj",
         "projectName": "New_Final_ET1",
-        "projectPath": "C:\\Users\\svasa\\Downloads\\New_Final_ET1\\New_Final_ET1.csproj",
+        "projectPath": "C:\\Users\\svasa\\Downloads\\E_Ticketing-main (2)\\E_Ticketing-main\\New_Final_ET1\\New_Final_ET1.csproj",
         "packagesPath": "C:\\Users\\svasa\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\svasa\\Downloads\\New_Final_ET1\\obj\\",
+        "outputPath": "C:\\Users\\svasa\\Downloads\\E_Ticketing-main (2)\\E_Ticketing-main\\New_Final_ET1\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\svasa\\AppData\\Roaming\\NuGet\\NuGet.Config",

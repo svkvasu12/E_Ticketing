@@ -44,7 +44,7 @@ namespace New_Final_ET1.Controllers
 
         }
         public async Task<IActionResult> AddItemToShoppingCart(int id)
-        {
+        { 
             var item = await _moviesService.GetMovieByIdAsync(id);
 
             if (item != null)

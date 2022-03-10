@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "cMscZzGC8XZlnSF3gkuQTMwDMhYsMWyKXI1gmNPcK2tYqcuxAyAzN9THKBbyVhW2HafERfNKha3guOLMUx+2jg==",
+  "dgSpecHash": "W/iw5GnhGB2uajHCUjfRQ7yV+epvK9szOVsp5qfQcIejRvsevOEmdMNrz6ZuAChf5ibr9NA4adcIOSOlVAA+Rg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\svasa\\Downloads\\New_Final_ET1\\New_Final_ET1.csproj",
+  "projectFilePath": "C:\\Users\\svasa\\Downloads\\E_Ticketing-main (2)\\E_Ticketing-main\\New_Final_ET1\\New_Final_ET1.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\svasa\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\svasa\\.nuget\\packages\\mailjet.api\\1.2.2\\mailjet.api.1.2.2.nupkg.sha512",

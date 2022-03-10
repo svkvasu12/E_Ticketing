@@ -43,7 +43,7 @@ namespace New_Final_ET1.Models
         public IFormFile FileForm { get; set; }
 
        
-        //Relationships
+      
         
 
        

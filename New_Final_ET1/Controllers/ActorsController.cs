@@ -23,7 +23,7 @@ namespace New_Final_ET1.Controllers
         }
         public async Task<IActionResult> Index()
         {
-            var data = await _service.GetAllAsync();
+            var data = await _service.GetAllAsync();//this gives the list of all actors from the DB
             return View(data);
         }
         [Authorize(Roles = "Admin")]

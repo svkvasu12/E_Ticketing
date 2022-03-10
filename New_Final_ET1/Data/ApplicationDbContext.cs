@@ -15,14 +15,17 @@ namespace New_Final_ET1.Data
             : base(options)
         {
         }
+
+        //model buiders for relationships in DB
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Actor_Movie>().HasKey(am => new
             {
                 am.ActorId,
                 am.MovieId
-            });
+            }); //this is configuration for actor_movie(it consists botth actor and movie)
 
+            //joining model(one movie with many actor_movies and same one actor with many actor movies)
             modelBuilder.Entity<Actor_Movie>().HasOne(m => m.Movie).WithMany(am => am.Actors_Movies).HasForeignKey(m => m.MovieId);
             modelBuilder.Entity<Actor_Movie>().HasOne(m => m.Actor).WithMany(am => am.Actors_Movies).HasForeignKey(m => m.ActorId);
 

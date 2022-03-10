@@ -6,10 +6,10 @@
     @if (SignInManager.IsSignedIn(User))
     {
         <li class="nav-item">
-            <a class="nav-link" href="#">Hello @UserManager.GetUserName(User)</a>
+            <a class="badge bg-success text-white" href="#">Hello @UserManager.GetUserName(User)</a>
         </li>
         <li class="nav-item">
-            <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+            <form class="btn btn-outline-primary float-right" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
                 <button type="submit" class="nav-link btn btn-link text-dark" asp-area="Identity" asp-page="/Account/Logout">Logout</button>
             </form>
         </li>
@@ -17,10 +17,10 @@
     else
     {
         <li class="nav-item">
-            <a class="nav-link" asp-controller="Account" asp-action="Register">Register</a>
+            <a class="btn btn-outline-primary float-right" asp-controller="Account" asp-action="Register">Register</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" asp-controller="Account" asp-action="Login">Login</a>
+            <a class="btn btn-outline-primary float-right" asp-controller="Account" asp-action="Login">Login</a>
         </li>
     }
 </ul>
